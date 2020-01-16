@@ -17,11 +17,24 @@ CREATE TABLE bicycles (
 );
 
 -- Create 3 bicycles and 2 owners
-INSERT INTO owners(name, age) VALUES ("Aaron", 28);
-INSERT INTO owners(name, age) VALUES ("Corey", 31);
-INSERT INTO bicycles(owner_id, color) VALUES (1, "Blue");
-INSERT INTO bicycles(owner_id, color) VALUES (2, "Yellow");
-INSERT INTO bicycles(owner_id, color) VALUES (2, "Green");
+INSERT INTO owners(name, age) VALUES (
+    "Aaron", 28
+),( 
+    "Corey", 31
+),(
+    "Doug", 34
+),(
+    "Kyle", 38
+),(
+    "Jeremy", 28
+);
+INSERT INTO bicycles(owner_id, color) VALUES (
+    1, "Blue"
+),(
+    2, "Yellow"
+),(
+    2, "Green"
+);
 
 -- Update the properties of one of the bicycles
 UPDATE bicycles SET color = "Black" WHERE color = "Yellow";
@@ -30,7 +43,7 @@ UPDATE bicycles SET color = "Black" WHERE color = "Yellow";
 SELECT * FROM bicycles;
 
 -- List all the bicycles with their owners
-SELECT * FROM bicycles inner join owners on bicycles.owner_id = owners;
+SELECT owners.name, bicycles.color FROM bicycles INNER JOIN owners ON bicycles.owner_id = owners.id;
 
 -- Delete one of the bicycles
 DELETE FROM bicycles WHERE color = "Green";
